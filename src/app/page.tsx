@@ -1,7 +1,6 @@
-import { GlowingDivider } from "@/components/magicui/glowing-divider";
-import { AiMagicSection } from "@/components/sections/ai-magic-section";
-import { GallerySection } from "@/components/sections/gallery-section";
-import { HeroSection } from "@/components/sections/hero-section";
+import ClientOnly from "@/components/ClientOnly";
+import { HomePageContent } from "@/components/sections/home-page-content";
+import { HomePageSkeleton } from "@/components/sections/home-page-skeleton";
 
 export default function Home() {
   return (
@@ -11,13 +10,9 @@ export default function Home() {
     >
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,_rgba(99,102,241,0.18),_transparent_45%)]" />
 
-      <div className="mx-auto flex w-full max-w-[1120px] flex-1 flex-col gap-6 px-4 py-8 sm:px-6 md:gap-10 md:py-14">
-        <HeroSection />
-        <GlowingDivider />
-        <AiMagicSection />
-        <GlowingDivider />
-        <GallerySection />
-      </div>
+      <ClientOnly fallback={<HomePageSkeleton />}>
+        <HomePageContent />
+      </ClientOnly>
     </main>
   );
 }
