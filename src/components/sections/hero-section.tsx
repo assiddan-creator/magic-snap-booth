@@ -25,7 +25,7 @@ export function HeroSection() {
         </span>
 
         <h1 className="max-w-3xl text-4xl font-semibold tracking-tight text-white md:text-6xl">
-          <SparklesText text="Magic Snap - חוויית צילום AI שעוד לא הכרתם" />
+          <SparklesText text="אסי וג'וני Photo Booth AI - חוויית צילום AI שעוד לא הכרתם" />
         </h1>
         <p className="max-w-2xl text-base text-zinc-300 md:text-lg">
           עמדות צילום חכמות ומגנטים באיכות פרימיום לאירועים
@@ -34,7 +34,7 @@ export function HeroSection() {
         <div className="flex flex-wrap justify-end gap-3">
           <Button size="lg" className="rounded-full px-7">
             <Camera className="ml-2 h-4 w-4" />
-            להזמנת Magic Snap
+            להזמנת אסי וג&apos;וני Photo Booth AI
           </Button>
           <Button
             variant="outline"

@@ -14,9 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Magic Snap | Luxury Photo Booth Experiences",
+  title: "אסי וג'וני Photo Booth AI | חוויית צילום חכמה לאירועים",
   description:
-    "High-end photo booth experiences for weddings, brands, and private events.",
+    "עמדות צילום AI חכמות, מגנטים פרימיום וחוויית צילום יוקרתית לאירועים פרטיים ועסקיים.",
 };
 
 export default function RootLayout({
