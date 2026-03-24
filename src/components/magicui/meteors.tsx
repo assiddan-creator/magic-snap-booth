@@ -3,7 +3,15 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { useMemo } from "react";
 
-type Meteor = { id: number; left: number; delay: number; duration: number; width: number };
+import { useIsClient } from "@/lib/hooks/use-is-client";
+
+type Meteor = {
+  id: number;
+  left: number;
+  delay: number;
+  duration: number;
+  width: number;
+};
 
 function seededMeteors(count: number): Meteor[] {
   return Array.from({ length: count }, (_, i) => {
@@ -19,11 +27,24 @@ function seededMeteors(count: number): Meteor[] {
   });
 }
 
+/** SSR-safe: defers animated layer until client to avoid hydration mismatches. */
 export function Meteors({ count = 28 }: { count?: number }) {
+  const isClient = useIsClient();
   const reduce = useReducedMotion();
   const meteors = useMemo(() => seededMeteors(count), [count]);
 
-  if (reduce) return null;
+  if (!isClient) {
+    return (
+      <div
+        className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+        aria-hidden
+      />
+    );
+  }
+
+  if (reduce) {
+    return null;
+  }
 
   return (
     <div

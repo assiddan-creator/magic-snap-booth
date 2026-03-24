@@ -3,7 +3,16 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { useMemo } from "react";
 
-type Particle = { id: number; x: number; y: number; size: number; duration: number; delay: number };
+import { useIsClient } from "@/lib/hooks/use-is-client";
+
+type Particle = {
+  id: number;
+  x: number;
+  y: number;
+  size: number;
+  duration: number;
+  delay: number;
+};
 
 function seededParticles(count: number): Particle[] {
   return Array.from({ length: count }, (_, i) => {
@@ -13,16 +22,27 @@ function seededParticles(count: number): Particle[] {
       id: i,
       x: (s * 100) % 100,
       y: (s2 * 100) % 100,
-      size: 1 + (s * 2.5),
+      size: 1 + s * 2.5,
       duration: 8 + s * 12,
       delay: s2 * 8,
     };
   });
 }
 
+/** SSR-safe: defers animated layer until client to avoid hydration mismatches. */
 export function Particles({ count = 48 }: { count?: number }) {
+  const isClient = useIsClient();
   const reduce = useReducedMotion();
   const particles = useMemo(() => seededParticles(count), [count]);
+
+  if (!isClient) {
+    return (
+      <div
+        className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
+        aria-hidden
+      />
+    );
+  }
 
   if (reduce) {
     return (
@@ -47,7 +67,8 @@ export function Particles({ count = 48 }: { count?: number }) {
             top: `${p.y}%`,
             width: p.size,
             height: p.size,
-            boxShadow: "0 0 8px rgba(168,85,247,0.6), 0 0 16px rgba(34,211,238,0.35)",
+            boxShadow:
+              "0 0 8px rgba(168,85,247,0.6), 0 0 16px rgba(34,211,238,0.35)",
           }}
           animate={{
             opacity: [0.15, 0.85, 0.15],
