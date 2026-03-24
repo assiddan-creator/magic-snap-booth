@@ -29,9 +29,14 @@ const itemVariants = {
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden rounded-3xl border border-white/10 bg-[radial-gradient(circle_at_80%_0%,rgba(168,85,247,0.22),transparent_42%),radial-gradient(circle_at_0%_100%,rgba(34,211,238,0.16),transparent_45%),linear-gradient(180deg,rgba(24,24,27,0.96),rgba(9,9,11,0.99))] p-8 shadow-2xl md:p-12">
-      <Particles count={56} />
-      <Meteors count={32} />
+    <section className="relative isolate overflow-hidden rounded-3xl border border-white/10 bg-[radial-gradient(circle_at_80%_0%,rgba(168,85,247,0.22),transparent_42%),radial-gradient(circle_at_0%_100%,rgba(34,211,238,0.16),transparent_45%),linear-gradient(180deg,rgba(24,24,27,0.96),rgba(9,9,11,0.99))] p-8 shadow-2xl md:p-12">
+      <div
+        className="pointer-events-none absolute inset-0 overflow-hidden rounded-[inherit]"
+        aria-hidden
+      >
+        <Particles count={56} />
+        <Meteors count={32} />
+      </div>
       <div className="absolute inset-0 opacity-35 [background-image:radial-gradient(rgba(255,255,255,0.07)_0.55px,transparent_0.55px)] [background-size:14px_14px]" />
       <div className="absolute -left-20 -top-24 h-56 w-56 rounded-full bg-fuchsia-500/25 blur-3xl" />
       <div className="absolute -bottom-24 -right-16 h-64 w-64 rounded-full bg-cyan-400/20 blur-3xl" />

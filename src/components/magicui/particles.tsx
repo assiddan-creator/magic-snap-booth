@@ -27,7 +27,7 @@ export function Particles({ count = 48 }: { count?: number }) {
   if (reduce) {
     return (
       <div
-        className="pointer-events-none absolute inset-0 opacity-30"
+        className="pointer-events-none absolute inset-0 overflow-hidden opacity-30"
         aria-hidden
       />
     );
@@ -35,7 +35,7 @@ export function Particles({ count = 48 }: { count?: number }) {
 
   return (
     <div
-      className="pointer-events-none absolute inset-0 overflow-hidden"
+      className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
       aria-hidden
     >
       {particles.map((p) => (

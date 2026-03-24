@@ -27,7 +27,7 @@ export function Meteors({ count = 28 }: { count?: number }) {
 
   return (
     <div
-      className="pointer-events-none absolute inset-0 overflow-hidden"
+      className="pointer-events-none absolute inset-0 z-0 overflow-hidden"
       aria-hidden
     >
       {meteors.map((m) => (

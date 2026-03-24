@@ -78,46 +78,51 @@ export function AiMagicSection() {
   return (
     <motion.section
       ref={sectionRef}
-      className="relative overflow-hidden rounded-3xl border border-white/10 bg-black px-6 py-14 md:px-10 md:py-20"
+      className="relative isolate min-h-0 overflow-hidden rounded-3xl border border-white/10 bg-black px-6 py-14 md:px-10 md:py-20"
     >
-      <motion.div
-        className="pointer-events-none absolute inset-0 opacity-90"
-        style={{
-          background: reduce
-            ? "radial-gradient(circle at 30% 20%, rgba(168,85,247,0.2), transparent 40%), radial-gradient(circle at 70% 80%, rgba(34,211,238,0.18), transparent 42%)"
-            : spotlight,
-        }}
-      />
-      <motion.div
-        className="pointer-events-none absolute -left-32 top-1/4 h-72 w-72 rounded-full bg-fuchsia-600/30 blur-[100px]"
-        style={{ opacity: glowIntensity }}
-        animate={
-          reduce
-            ? undefined
-            : {
-                scale: [1, 1.15, 1],
-                x: [0, 24, 0],
-                y: [0, -16, 0],
-              }
-        }
-        transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="pointer-events-none absolute -right-24 bottom-0 h-80 w-80 rounded-full bg-cyan-500/25 blur-[110px]"
-        style={{ opacity: glowIntensity }}
-        animate={
-          reduce
-            ? undefined
-            : {
-                scale: [1.08, 1, 1.08],
-                x: [0, -20, 0],
-                y: [0, 20, 0],
-              }
-        }
-        transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
-      />
+      <div
+        className="pointer-events-none absolute inset-0 overflow-hidden rounded-[inherit]"
+        aria-hidden
+      >
+        <motion.div
+          className="absolute inset-0 opacity-90"
+          style={{
+            background: reduce
+              ? "radial-gradient(circle at 30% 20%, rgba(168,85,247,0.2), transparent 40%), radial-gradient(circle at 70% 80%, rgba(34,211,238,0.18), transparent 42%)"
+              : spotlight,
+          }}
+        />
+        <motion.div
+          className="absolute -left-32 top-1/4 h-72 w-72 rounded-full bg-fuchsia-600/30 blur-[100px]"
+          style={{ opacity: glowIntensity }}
+          animate={
+            reduce
+              ? undefined
+              : {
+                  scale: [1, 1.15, 1],
+                  x: [0, 24, 0],
+                  y: [0, -16, 0],
+                }
+          }
+          transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute -right-24 bottom-0 h-80 w-80 rounded-full bg-cyan-500/25 blur-[110px]"
+          style={{ opacity: glowIntensity }}
+          animate={
+            reduce
+              ? undefined
+              : {
+                  scale: [1.08, 1, 1.08],
+                  x: [0, -20, 0],
+                  y: [0, 20, 0],
+                }
+          }
+          transition={{ duration: 12, repeat: Infinity, ease: "easeInOut" }}
+        />
+      </div>
 
-      <div className="relative grid gap-12 md:grid-cols-2 md:items-center md:gap-16">
+      <div className="relative z-10 grid min-h-0 gap-12 md:grid-cols-2 md:items-center md:gap-16">
         <motion.div
           variants={copyVariants}
           initial="hidden"
