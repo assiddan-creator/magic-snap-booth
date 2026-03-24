@@ -5,28 +5,28 @@ import { motion } from "framer-motion";
 
 const galleryItems = [
   {
-    title: "Wedding Glam",
-    src: "https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1200&q=80",
+    title: "חתונת יוקרה",
+    src: "https://images.unsplash.com/photo-1520854221256-17451cc331bf?auto=format&fit=crop&w=1400&q=85",
   },
   {
-    title: "Corporate Luxe",
-    src: "https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1200&q=80",
+    title: "אירוע עסקי",
+    src: "https://images.unsplash.com/photo-1519167758481-83f550bb49b3?auto=format&fit=crop&w=1400&q=85",
   },
   {
-    title: "Brand Activations",
-    src: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?auto=format&fit=crop&w=1200&q=80",
+    title: "חגיגה פרטית",
+    src: "https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?auto=format&fit=crop&w=1400&q=85",
   },
 ];
 
 export function GallerySection() {
   return (
-    <section className="space-y-6">
+    <section className="space-y-6 text-right">
       <div className="space-y-2">
         <h2 className="text-2xl font-semibold tracking-tight text-white md:text-3xl">
-          Signature Gallery
+          הגלריה שלנו
         </h2>
         <p className="text-zinc-300">
-          Interactive previews that reflect our polished, premium visual style.
+          טעימה מהרגעים הקסומים שאנחנו יוצרים
         </p>
       </div>
       <div className="grid gap-4 md:grid-cols-3">
@@ -38,13 +38,15 @@ export function GallerySection() {
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.4, delay: index * 0.08 }}
             whileHover={{ y: -5, scale: 1.01 }}
-            className="group relative overflow-hidden rounded-2xl border border-white/10 bg-zinc-950"
+            className="group relative overflow-hidden rounded-2xl border border-white/10 bg-zinc-900"
           >
             <Image
               src={item.src}
               alt={item.title}
               width={900}
               height={1200}
+              placeholder="blur"
+              blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwMCIgaGVpZ2h0PSIxNjAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IGZpbGw9IiMxODE4MWIiIHdpZHRoPSIxMjAwIiBoZWlnaHQ9IjE2MDAiLz48L3N2Zz4="
               className="h-72 w-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
             <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent p-4">
